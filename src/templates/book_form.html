@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class = "container">
+	<h1>Create a Book</h1>
+	<form method = 'POST' action= '' enctype = "multipart/form-data" novalidate id = "book-form">{% csrf_token %}
+		<label for="book-title" class="control-label">Book Title</label>
+			{{form.title }}
+		<br><br>
+		<label for="book-author" class="control-label">Book Author</label>
+		{{form.author }}
+		<a href="/author/create" id="add_author" onclick="return showAddPopup(this);"><img src = "{% static '/images/icon-addlink.svg' %}"></a>
+		<a id="edit_author" style="cursor: pointer; cursor: hand;"><img src = "{% static '/images/icon-changelink.svg' %}"></a>
+		<br><br>
+		<label for="book-price" class="control-label">Book Price</label>
+		{{form.price }}
+		<br><br>
+		<label for="book-publish" class="control-label">Book Publish</label>
+		{{form.publish }}
+		<input type="submit" value = "Submit" />
+	</form>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+
+$("#edit_author").click(function(){
+	author_name = $("#id_author option:selected").text();
+	var data = {"author_name":author_name};
+    $.ajax({
+        type : 'GET',
+        url :  '/author/ajax/get_author_id',
+        data : data,
+        success : function(data){
+        	var url = "/author/" + data['author_id'] + "/edit/";
+        	showEditPopup(url);
+        },
+        error: function(data) {
+          alert("Something Went Wrong"); 
+        }
+  	});
+})
+</script>
+{% endblock %}
