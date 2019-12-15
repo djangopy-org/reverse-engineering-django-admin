@@ -1,5 +1,7 @@
 # Guide to implement Reverse Engineering of the Django Admin Foreign Key's Add/Edit Button
-This is the example project for implementing Reverse Engineering of the Django Admin Foreign Key's Add/Edit Button. You can find guide from [here](https://djangopy.org/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/)
+This is the example project for implementing Reverse Engineering of the Django Admin Foreign Key's Add/Edit Button. 
+
+Guide link: https://djangopy.org/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/
 
 
 
